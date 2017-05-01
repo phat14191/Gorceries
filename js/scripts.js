@@ -1,21 +1,16 @@
-var icecream = [];
-var flavor = [];
+$(function() {
+  $("#form-group").submit(function(event) {
+    $("#form-group").hide();
+      var item = ["itemOne", "itemTwo"];
+      var upperItems = item.map(function(item) {
+        return $("input#" +item).val().toUpperCase();
+      });
 
-$(document).ready(function() {
-  $("form#ice").submit(function(event) {
-    icecream.push($("input#name").val());
-    alert (icecream);
-    flavor.push($("input#flavor").val());
-    icecream.forEach(function(name1) {
-      alert("Your name" + name1);
+      upperItems.sort();
+      upperItems.forEach(function(upperItem) {
+        $("ul").append("<li>" + upperItem + "</li>");
+      });
 
-    flavor.forEach(function(flavor1) {
-      alert("Your flavor " +flavor1);
-    });
-
-    });
-    event.preventDefault();
+  event.preventDefault();
   });
-
-
 });
